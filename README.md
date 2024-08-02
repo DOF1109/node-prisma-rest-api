@@ -6,3 +6,6 @@ Extensions for VS Code:
 
 In package.json:
 - Add '"type": module' to use import and export
+
+Extra:
+- "npx prisma studio" to open Studio for database
