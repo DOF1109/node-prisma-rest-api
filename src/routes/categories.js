@@ -8,4 +8,13 @@ router.get("/categories", async (req, res) => {
   res.json(categories);
 });
 
+router.get("/categories-products", async (req, res) => {
+  const categories = await prisma.category.findMany({
+    include: {
+      products: true,
+    },
+  });
+  res.json(categories);
+});
+
 export default router;

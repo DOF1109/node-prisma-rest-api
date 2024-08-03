@@ -4,7 +4,11 @@ import { prisma } from "../db.js";
 const router = new Router();
 
 router.get("/products", async (req, res) => {
-  const products = await prisma.product.findMany();
+  const products = await prisma.product.findMany({
+    include: {
+      category: true,
+    },
+  });
   res.json(products);
 });
 
@@ -12,6 +16,9 @@ router.get("/products/:id", async (req, res) => {
   const foundedProduct = await prisma.product.findFirst({
     where: {
       id: parseInt(req.params.id),
+    },
+    include: {
+      category: true,
     },
   });
 
